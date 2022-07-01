@@ -83,7 +83,7 @@ public class ActeurRepositoryTest {
      */
     @Test
     public void testExtraireActeursParPays() {
-        TypedQuery<Acteur> query = em.createQuery("SELECT a FROM Acteur a", Acteur.class);
+        TypedQuery<Acteur> query = em.createQuery("SELECT DISTINCT a FROM Acteur a JOIN a.roles roles JOIN roles.film film JOIN film.pays pays WHERE pays.nom ='France'", Acteur.class);
         List<Acteur> acteurs = query.getResultList();
         assertEquals(158, acteurs.size());
     }
@@ -94,7 +94,7 @@ public class ActeurRepositoryTest {
      */
     @Test
     public void testExtraireActeursParListePaysEtAnnee() {
-        TypedQuery<Acteur> query = em.createQuery("SELECT a FROM Acteur a JOIN  a.roles roles JOIN  roles.film film JOIN  film.pays pays WHERE pays.nom = 'France' AND film.annee = 2017", Acteur.class);
+        TypedQuery<Acteur> query = em.createQuery("SELECT DISTINCT a FROM Acteur a JOIN  a.roles roles JOIN  roles.film film JOIN  film.pays pays WHERE pays.nom = 'France' AND film.annee = 2017", Acteur.class);
         List<Acteur> acteurs = query.getResultList();
         assertEquals(24, acteurs.size());
     }
