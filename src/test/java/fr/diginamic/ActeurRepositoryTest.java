@@ -91,7 +91,7 @@ public class ActeurRepositoryTest {
     /**
      * Extraire la liste de tous les acteurs ayant joué dans un film français paru en 2017
      * Astuce: mot clé distinct
-     */
+     **/
     @Test
     public void testExtraireActeursParListePaysEtAnnee() {
         TypedQuery<Acteur> query = em.createQuery("SELECT DISTINCT a FROM Acteur a JOIN  a.roles roles JOIN  roles.film film JOIN  film.pays pays WHERE pays.nom = 'France' AND film.annee = 2017", Acteur.class);
