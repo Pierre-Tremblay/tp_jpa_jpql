@@ -16,27 +16,27 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name = "ACTEUR")
+@Table(name = "acteur")
 public class Acteur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
-	
+
 	@Column(name="id_imdb")
 	private String idImdb;
 	private String identite;
 	private String href;
 	private LocalDate anniversaire;
-	
+
 	@OneToMany(mappedBy = "acteur")
 	private Set<Role> roles = new HashSet<>();
 
 	public Acteur() {
-		
+
 	}
-	
+
 	public Acteur(String idImdb, String identite) {
 		super();
 		this.idImdb = idImdb;
@@ -70,7 +70,7 @@ public class Acteur {
 
 	/**
 	 * Getter
-	 * 
+	 *
 	 * @return the anniversaire
 	 */
 	public LocalDate getAnniversaire() {
@@ -79,7 +79,7 @@ public class Acteur {
 
 	/**
 	 * Setter
-	 * 
+	 *
 	 * @param anniversaire the anniversaire to set
 	 */
 	public void setAnniversaire(LocalDate anniversaire) {
@@ -88,7 +88,7 @@ public class Acteur {
 
 	/**
 	 * Getter
-	 * 
+	 *
 	 * @return the href
 	 */
 	public String getHref() {
@@ -97,7 +97,7 @@ public class Acteur {
 
 	/**
 	 * Setter
-	 * 
+	 *
 	 * @param href the href to set
 	 */
 	public void setHref(String href) {
@@ -106,7 +106,7 @@ public class Acteur {
 
 	/**
 	 * Getter
-	 * 
+	 *
 	 * @return the id
 	 */
 	public Long getId() {
@@ -115,7 +115,7 @@ public class Acteur {
 
 	/**
 	 * Setter
-	 * 
+	 *
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {

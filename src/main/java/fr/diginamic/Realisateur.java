@@ -13,36 +13,36 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="REALISATEUR")
+@Table(name="realisateur")
 public class Realisateur {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
-	
+
 	@Column(name="id_imdb")
 	private String idImdb;
 	private String identite;
 	private String href;
 	private LocalDate anniversaire;
-	
+
 	public Realisateur() {
-		
+
 	}
-	
+
 	public Realisateur(String idImdb, String identite, String href) {
 		super();
 		this.idImdb = idImdb;
 		this.identite = identite;
 		this.href = href;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder().append(idImdb).toHashCode();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Realisateur)) {
@@ -51,7 +51,7 @@ public class Realisateur {
 		Realisateur autre = (Realisateur)obj;
 		return new EqualsBuilder().append(idImdb, autre.getIdImdb()).isEquals();
 	}
-	
+
 	/** Getter
 	 * @return the id
 	 */

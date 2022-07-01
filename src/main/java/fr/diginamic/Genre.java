@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="GENRE")
+@Table(name="genre")
 public class Genre {
 
 	@Id
@@ -19,7 +19,7 @@ public class Genre {
 	@Column(name="id")
 	private Long id;
 	private String nom;
-	
+
 	public Genre() {
 
 	}
@@ -27,12 +27,12 @@ public class Genre {
 		super();
 		this.nom = nom;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder().append(nom).toHashCode();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Genre)) {

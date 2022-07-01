@@ -9,28 +9,28 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="ROLE")
+@Table(name="role")
 public class Role {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	/** nom : String */
 	private String nom;
-	
+
 	@ManyToOne
 	@JoinColumn(name="ID_FILM")
 	private Film film;
-	
+
 	@ManyToOne
 	@JoinColumn(name="ID_ACTEUR")
 	private Acteur acteur;
-	
+
 	public Role() {
-		
+
 	}
-	
+
 	public Role(String nom, Film film) {
 		this.nom = nom;
 		this.film = film;

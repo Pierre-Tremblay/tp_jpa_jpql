@@ -11,7 +11,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="PAYS")
+@Table(name="pays")
 public class Pays {
 
 	@Id
@@ -19,7 +19,7 @@ public class Pays {
 	@Column(name="id")
 	private Long id;
 	private String nom;
-	
+
 	public Pays() {
 
 	}
@@ -27,12 +27,12 @@ public class Pays {
 		super();
 		this.nom = nom;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder().append(nom).toHashCode();
 	}
-	
+
 	@Override
 	public boolean equals(Object obj) {
 		if (!(obj instanceof Pays)) {
@@ -41,7 +41,7 @@ public class Pays {
 		Pays autre = (Pays)obj;
 		return new EqualsBuilder().append(nom, autre.getNom()).isEquals();
 	}
-	
+
 	/** Getter
 	 * @return the id
 	 */
@@ -66,6 +66,6 @@ public class Pays {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-	
+
 
 }

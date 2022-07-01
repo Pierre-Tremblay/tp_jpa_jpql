@@ -18,61 +18,61 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Entity
-@Table(name="FILM")
+@Table(name="film")
 public class Film {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
 	private Long id;
-	
+
 	@Column(name="id_imdb")
 	private String idImdb;
-	
+
 	@Column(name="imdb_href")
 	private String imdbHref;
 	private String nom;
 	private Integer annee;
 	private char traite;
-	
+
 	@OneToMany(mappedBy="film")
 	private Set<Role> roles = new HashSet<>();
-	
+
 	@ManyToMany
-	@JoinTable(name="FILM_REAlISATEUR", joinColumns = { @JoinColumn(name = "id_film") }, 
-    inverseJoinColumns = { @JoinColumn(name = "id_realisateur") } )
+	@JoinTable(name="film_realisateur", joinColumns = { @JoinColumn(name = "id_film") },
+			inverseJoinColumns = { @JoinColumn(name = "id_realisateur") } )
 	private Set<Realisateur> realisateurs = new HashSet<>();
-	
+
 	@ManyToMany
-	@JoinTable(name="FILM_GENRE", joinColumns = { @JoinColumn(name = "id_film") }, 
-	        inverseJoinColumns = { @JoinColumn(name = "id_genre") } )
+	@JoinTable(name="film_genre", joinColumns = { @JoinColumn(name = "id_film") },
+			inverseJoinColumns = { @JoinColumn(name = "id_genre") } )
 	private Set<Genre> genres = new HashSet<>();
-	
+
 	@ManyToMany
-	@JoinTable(name="FILM_PAYS", joinColumns = { @JoinColumn(name = "id_film") }, 
-	        inverseJoinColumns = { @JoinColumn(name = "id_pays") } )
+	@JoinTable(name="film_pays", joinColumns = { @JoinColumn(name = "id_film") },
+			inverseJoinColumns = { @JoinColumn(name = "id_pays") } )
 	private Set<Pays> pays = new HashSet<>();
-	
+
 	public Film() {
-		
+
 	}
-	
+
 	public Film(String imdbHref, String nom) {
 		super();
 		this.imdbHref = imdbHref;
 		this.nom = nom;
 	}
-	
+
 	public Film(String nom, Integer annee) {
 		super();
 		this.nom = nom;
 		this.annee = annee;
 	}
-	
+
 	public boolean acteurExists(Acteur acteur) {
 		return roles.stream().anyMatch(r -> r.getActeur().equals(acteur));
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return new HashCodeBuilder().append(idImdb).toHashCode();
@@ -234,5 +234,5 @@ public class Film {
 		this.pays = pays;
 	}
 
-	
+
 }
